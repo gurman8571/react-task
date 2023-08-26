@@ -99,7 +99,7 @@ export default function Header() {
             {navbar?.map(items=>{
 return(
  
-<>
+<span key={items?.id}>
 {items.child?
 
 <>
@@ -133,7 +133,7 @@ return(
 <div
   id="dropdown" 
  className={dropdown?"z-10 absolute top-6  mt-4 ml-24 ":"hidden"}
- style={{left:247}}
+ style={{left:170}}
 >
   <ul
     className="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -142,7 +142,7 @@ return(
   >
    {items?.child?.map(child=>{
 
-    return( <li>
+    return( <li key={child?.id}>
       <span
         href="#"
         className=" font-bold p-1 text-md  text-white"
@@ -159,7 +159,7 @@ return(
 :<button key={items?.id}  className=" text-white  focus:outline-none focus:ring-blue-300  
 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> 
 {items?.name}</button>}
-</>
+</span>
 
 )
 
