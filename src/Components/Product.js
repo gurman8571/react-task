@@ -5,7 +5,6 @@ import 'swiper/css';
 export default function Product() {
 const [products, setproducts] = useState([]);
 const [error, seterror] = useState("")
-
 const getproducts=async()=>{
 try {
 const data=await fetch('https://api.escuelajs.co/api/v1/products');
