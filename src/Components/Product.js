@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import { Swiper, SwiperSlide } from 'swiper/react';
-// Import Swiper styles
-import 'swiper/css';
+
+
 export default function Product() {
 const [products, setproducts] = useState([]);
 const [error, seterror] = useState("")
@@ -33,13 +32,13 @@ return (
         </div>
         <div className="container px-5 py-16 mx-auto w-5/6">
 
-            {error?<p className='flex justify-center'> {error}</p>: <Swiper navigation slidesPerView={3}>
+            {error?<p className='flex justify-center'> {error}</p>: <div>
 
 
                 { products?.map((product) => {
                 return(
 
-                <SwiperSlide key={product?.id}>
+                <div key={product?.id}>
 
                     <div className="p-4 ">
                         <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
@@ -65,12 +64,12 @@ return (
                             </div>
                         </div>
                     </div>
-                </SwiperSlide>
+                </div>
 
                 )
                 })
                 }
-            </Swiper>}
+            </div>}
         </div>
     </div>
 </section>
