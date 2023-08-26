@@ -1,9 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react';
-
 // Import Swiper styles
-
-
 import 'swiper/css';
 export default function Product() {
 const [products, setproducts] = useState([]);
