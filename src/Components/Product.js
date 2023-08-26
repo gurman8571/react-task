@@ -2,10 +2,21 @@ import React, { useEffect, useState } from 'react'
 
 
 export default function Product() {
-
 const [products, setproducts] = useState([]);
 const [error, seterror] = useState("")
+const getproducts=async()=>{
+try {
+const data=await fetch('https://api.escuelajs.co/api/v1/products');
+setproducts(await data.json() );
+} catch (error) {
 
+seterror("Api error: " + error.message);
+}
+}
+
+useEffect(() => {
+getproducts();
+}, [])
 
 return (
 <section className="text-gray-600 body-font">
