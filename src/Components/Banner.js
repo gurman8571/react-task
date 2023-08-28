@@ -5,7 +5,7 @@ export default function Banner() {
     <div className='bg-black w-full h-full flex px-24'>
 
      
-      <img  alt="banner" src={Image} className="py-4 px-2 h-full "/>
+      <img  alt="banner" src={Image} className="py-4 px-2 h-full w-full "/>
 
            </div> 
   )
