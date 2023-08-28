@@ -8,6 +8,7 @@ export default function Product() {
     const [error, seterror] = useState("")
     const [categories, setcategories] = useState([])
     const [filtered, setfiltered] = useState([]);
+    const colors=['blue','green','yellow','red'];
 
 const getcategories=async()=>{
   try {
@@ -54,7 +55,7 @@ const getproducts=async()=>{
   return ( <button
   key={i}
     type="button"
-    className="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline"
+    className={`border border-${colors[i]}-200 bg-${colors[i]}-500 text-white rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline`}
     onClick={()=>filterProducts(value)}
   >
     {value}
