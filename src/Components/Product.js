@@ -6,11 +6,30 @@ import 'swiper/css';
 export default function Product() {
     const [products, setproducts] = useState([]);
     const [error, seterror] = useState("")
+    const [categories, setcategories] = useState([])
+    const [filtered, setfiltered] = useState([]);
 
+const getcategories=async()=>{
+  try {
+    const data=await fetch('https://fakestoreapi.com/products/categories');
+    setcategories(await data.json() );
+   } catch (error) {
+    
+    seterror("Api error: " + error.message);
+   }
+
+}
+
+const filterProducts=(value)=>{
+const newarr = products.filter((product) => product.category === value);
+setfiltered(newarr);
+}
 const getproducts=async()=>{
    try {
     const data=await fetch('https://fakestoreapi.com/products');
-    setproducts(await data.json() );
+   const res=await data.json() ;
+   setproducts(res)
+    setfiltered(res );
    } catch (error) {
     
     seterror("Api error: " + error.message);
@@ -20,10 +39,33 @@ const getproducts=async()=>{
     useEffect(() => {
      getproducts();
     }, [])
+    useEffect(() => {
+     getcategories();
+    }, [])
+    
     
   return (
     <section className="text-gray-600 body-font">
-<div className='text-black lg:text-6xl font-bold mx-12 mt-6 '> New products</div>
+<div className='mx-12 mt-6 '> 
+<div className='text-black lg:text-6xl font-bold '> New products</div>
+
+<div className='px-12 mt-2'><>
+{categories?.map((value,i)=>{
+  return ( <button
+  key={i}
+    type="button"
+    className="border border-gray-200 bg-gray-200 text-gray-700 rounded-md px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-gray-300 focus:outline-none focus:shadow-outline"
+    onClick={()=>filterProducts(value)}
+  >
+    {value}
+  </button>)
+})}
+         
+       
+</>
+</div>
+</div>
+
   <div className='flex'>
 
   <div className="container px-5 lg:py-16 mx-auto w-5/6">
@@ -53,7 +95,7 @@ const getproducts=async()=>{
         >
        
         
-          { products?.map((product) => {
+          { filtered?.map((product) => {
      return(
      
         <>
